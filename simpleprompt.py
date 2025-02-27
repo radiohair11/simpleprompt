@@ -5,20 +5,11 @@
 import praw
 import logging
 import random
-import tkinter as tk
 import configparser
+import os
 
-def center_window(window, width, height):
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-    
-    x = (screen_width/2) - (width/2)
-    y = (screen_height/2) - (height/2)
-    
-    window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-
-window_width = 800
-window_height = 50
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 logger = logging.getLogger(__name__)
 
@@ -50,12 +41,8 @@ random_submission = random.choice(submission_titles)
 logger.info("\n")
 logger.info(random_submission)
 
-window = tk.Tk()
-window.title("Simple Prompt")
-
-text_label = tk.Label(window, text=random_submission, padx=20, pady=10)
-text_label.pack()
-
-# Start the Tkinter event loop
-center_window(window, window_width, window_height)
-window.mainloop()
+clear_console()
+print(random_submission)
+print("press enter when done")
+input()
+clear_console()
